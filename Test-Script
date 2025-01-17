@@ -1,0 +1,13 @@
+import time
+import RPi.GPIO as GPIO
+
+# Test Script zum Ansteuern einer LED
+
+# GPIO Modus setzen
+GPIO.setmode(GPIO.BCM)
+
+#GPIO Pins zuweisen
+GPIO.setup(18, GPIO.OUT)
+
+# Initialisieren der Variable "LED" mit dem GPIO Pin 18
+led_pin = 18
