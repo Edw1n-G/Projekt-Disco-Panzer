@@ -1,0 +1,58 @@
+# ...existing code...
+
+if event.type == pygame.JOYBUTTONDOWN:
+    print("Joystick button pressed.")
+
+if event.type == pygame.JOYBUTTONUP:
+    print("Joystick button released.")
+
+if axes > 0:
+    for i in range(axes):
+        axis = joysticks[joystick.get_instance_id()].get_axis(i)
+
+# Handle hotplugging
+if event.type == pygame.JOYDEVICEADDED:
+    # This event will be generated when the program starts for every
+    # joystick, filling up the list without needing to create them manually.
+    joy = pygame.joystick.Joystick(event.device_index)
+    # If no joystick is connected, connect the new one
+    if len(joysticks) == 0:
+        joysticks[joy.get_instance_id()] = joy
+        joystick = joysticks[joy.get_instance_id()]
+        print(f"Joystick {joy.get_instance_id()} connected")
+        # Get the name from the OS for the controller
+        name = joystick.get_name()
+        print(f"Controller name: {name}")
+
+        # GUID is a unique ID for the controller
+        guid = joystick.get_guid()
+        print(f"Controller GUID: {guid}")
+
+        # Power level
+        power_level = joystick.get_power_level()
+        print(f"Controller power level: {power_level}")
+
+        # Number of buttons
+        buttons = joystick.get_numbuttons()
+        print(f"Number of buttons: {buttons}")
+
+        # Number of axes
+        axes = joystick.get_numaxes()
+        print(f"Number of axes: {axes}")
+    else:
+        print(f"Joystick {joy.get_instance_id()} disconnected because another joystick is already connected")
+        joy.quit()
+
+if event.type == pygame.JOYDEVICEREMOVED:
+    disconnected_id = event.instance_id
+    if disconnected_id in joysticks:
+        print(f"Joystick {disconnected_id} disconnected")
+        joysticks[disconnected_id].quit()
+        del joysticks[disconnected_id]
+        # Check if there are any remaining joysticks
+        if len(joysticks) > 0:
+            joystick = list(joysticks.values())[0]
+        else:
+            joystick = None
+
+# ...existing code...

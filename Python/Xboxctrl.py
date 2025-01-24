@@ -84,25 +84,25 @@ def main():
         # Get count of joysticks.
         joystick_count = pygame.joystick.get_count()
 
-        text_print.tprint(screen, f"Number of joysticks: {joystick_count}")
+        text_print.tprint(screen, f"Number of Controller: {joystick_count}")
         text_print.indent()
 
         # For each joystick:
         for joystick in joysticks.values():
             jid = joystick.get_instance_id()
 
-            text_print.tprint(screen, f"Joystick {jid}")
+            text_print.tprint(screen, f"Controller {jid}")
             text_print.indent()
 
-            # Get the name from the OS for the controller/joystick.
+            # Get the name from the OS for the controller
             name = joystick.get_name()
-            text_print.tprint(screen, f"Joystick name: {name}")
+            text_print.tprint(screen, f"Controller name: {name}")
 
             guid = joystick.get_guid()
             text_print.tprint(screen, f"GUID: {guid}")
 
             power_level = joystick.get_power_level()
-            text_print.tprint(screen, f"Joystick's power level: {power_level}")
+            text_print.tprint(screen, f"Controller's power level: {power_level}")
 
             # Usually axis run in pairs, up/down for one, and left/right for
             # the other. Triggers count as axes.
