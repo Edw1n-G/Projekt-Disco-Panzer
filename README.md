@@ -13,5 +13,5 @@
 <h2>To Do List</h2>
 <ul>
   <li>Pro-Contra Analyse für Microcontroller</li>
-  <li></li>
+  <li>Motor Aussuchen</li>
 </ul>
