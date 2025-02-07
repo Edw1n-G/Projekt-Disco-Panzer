@@ -120,6 +120,7 @@ def main():
             continue
         
         # Read joystick Y-axis value (-1 to 1)
+        pygame.joystick.init()
         axis_y = joystick.get_axis(1)
         
         # Apply deadzone logic
